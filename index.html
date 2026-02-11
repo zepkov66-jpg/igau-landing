@@ -10,10 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Яндекс.Метрика (код будет добавлен позже) -->
-    <!-- Meta Pixel (код будет добавлен позже) -->
 </head>
 <body>
+    <!-- Индикатор прогресса прокрутки -->
+    <div class="scroll-progress"></div>
+    
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -26,10 +27,12 @@
                     </div>
                 </a>
                 <div class="nav-links">
-                    <a href="#about" class="nav-link">Об институте</a>
-                    <a href="#contacts" class="nav-link">Контакты</a>
-                    <a href="#schedule" class="nav-link">Режим работы</a>
-                    <button class="cta-button">Задать вопрос</button>
+                    <a href="#about" class="nav-link" data-section="about">Об институте</a>
+                    <a href="#contacts" class="nav-link" data-section="contacts">Контакты</a>
+                    <a href="#schedule" class="nav-link" data-section="schedule">Режим работы</a>
+                    <button class="cta-button" id="mainCtaBtn">
+                        <i class="fas fa-headset"></i> Бесплатная консультация
+                    </button>
                 </div>
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
@@ -46,7 +49,7 @@
                     <h1 class="hero-title">Качественное высшее образование в <span class="highlight">Улан-Удэ</span></h1>
                     <p class="hero-subtitle">Негосударственное частное учреждение высшего образования с московскими стандартами качества в вашем городе</p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary" id="consultBtn">
+                        <button class="btn btn-primary pulse-button" id="consultBtn">
                             <i class="fas fa-graduation-cap"></i> Записаться на консультацию
                         </button>
                         <button class="btn btn-secondary" id="programsBtn">
@@ -363,9 +366,11 @@
         </div>
     </div>
 
+    <!-- Кнопка "Наверх" -->
+    <button class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
-    
-    <!-- Яндекс.Метрика (код будет добавлен позже) -->
-    <!-- Meta Pixel (код будет добавлен позже) -->
 </body>
 </html>
