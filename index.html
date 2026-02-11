@@ -182,23 +182,40 @@
                         <h3>Остались вопросы?</h3>
                         <p>Заполните форму, и мы свяжемся с вами в течение рабочего дня</p>
                         
-                        <form id="contactForm">
+                        <form id="contactForm" action="mailto:cepkova64@mail.ru" method="post" enctype="text/plain">
+                            <input type="hidden" name="_subject" value="Новый вопрос с сайта ИГАУ">
                             <div class="form-group">
-                                <input type="text" id="name" placeholder="Ваше имя" required>
+                                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="phone" placeholder="8 (914) 840-20-20" required>
+                                <input type="tel" id="phone" name="phone" placeholder="8 (914) 840-20-20" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" placeholder="cepkova64@mail.ru">
+                                <input type="email" id="email" name="email" placeholder="Ваш email">
                             </div>
                             <div class="form-group">
-                                <textarea id="message" placeholder="Ваш вопрос" rows="3"></textarea>
+                                <textarea id="message" name="message" placeholder="Ваш вопрос" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-paper-plane"></i> Отправить
                             </button>
                         </form>
+                        
+                        <!-- Кнопки прямой связи -->
+                        <div class="direct-contact-buttons">
+                            <h4>Или свяжитесь напрямую:</h4>
+                            <div class="contact-buttons">
+                                <a href="tel:+79148402020" class="btn btn-success">
+                                    <i class="fas fa-phone"></i> Позвонить: 8 (914) 840-20-20
+                                </a>
+                                <a href="https://t.me/igau_uulanude" target="_blank" class="btn btn-telegram">
+                                    <i class="fab fa-telegram"></i> Telegram: @igau_uulanude
+                                </a>
+                                <a href="mailto:cepkova64@mail.ru?subject=Вопрос%20по%20обучению%20в%20ИГАУ" class="btn btn-email">
+                                    <i class="fas fa-envelope"></i> Email: cepkova64@mail.ru
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -217,8 +234,8 @@
                                     <strong>8 (914) 840-20-20</strong>
                                 </div>
                                 <div class="coordinate">
-                                    <span>Email:</span>
-                                    <strong>cepkova64@mail.ru</strong>
+                                    <span>Telegram:</span>
+                                    <strong>@igau_uulanude</strong>
                                 </div>
                             </div>
                         </div>
@@ -254,6 +271,7 @@
                     </div>
                     <div class="schedule-card-footer">
                         <p><i class="fas fa-phone-alt"></i> Консультации по телефону: 8 (914) 840-20-20</p>
+                        <p><i class="fab fa-telegram"></i> Telegram: @igau_uulanude</p>
                     </div>
                 </div>
                 
@@ -307,6 +325,7 @@
                         <h4>Контакты</h4>
                         <p><i class="fas fa-map-marker-alt"></i> ул. Партизанская, 28, Улан-Удэ</p>
                         <p><i class="fas fa-phone-alt"></i> 8 (914) 840-20-20</p>
+                        <p><i class="fab fa-telegram"></i> @igau_uulanude</p>
                         <p><i class="fas fa-envelope"></i> cepkova64@mail.ru</p>
                     </div>
                 </div>
@@ -315,9 +334,13 @@
             <div class="footer-bottom">
                 <p>© 2023 ЧУ ВО Институт государственного администрирования. Все права защищены.</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/igau_uulanude" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="mailto:cepkova64@mail.ru" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -332,27 +355,32 @@
             </div>
             <div class="modal-body">
                 <p>Заполните форму, и наш специалист свяжется с вами для консультации по программам обучения, условиям поступления и стоимости.</p>
+                
+                <!-- Кнопки быстрой связи в модальном окне -->
                 <div class="modal-contact-info">
-                    <p><i class="fas fa-phone-alt"></i> Или позвоните нам: <strong>8 (914) 840-20-20</strong></p>
+                    <p><i class="fas fa-phone-alt"></i> Позвоните нам: <strong>8 (914) 840-20-20</strong></p>
+                    <p><i class="fab fa-telegram"></i> Напишите в Telegram: <strong>@igau_uulanude</strong></p>
                 </div>
-                <form id="consultForm">
+                
+                <form id="consultForm" action="mailto:cepkova64@mail.ru" method="post" enctype="text/plain">
+                    <input type="hidden" name="_subject" value="Запись на консультацию в ИГАУ">
                     <div class="form-group">
-                        <input type="text" id="consultName" placeholder="Ваше имя" required>
+                        <input type="text" id="consultName" name="name" placeholder="Ваше имя" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="consultPhone" placeholder="8 (914) 840-20-20" required>
+                        <input type="tel" id="consultPhone" name="phone" placeholder="8 (914) 840-20-20" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="consultEmail" placeholder="cepkova64@mail.ru">
+                        <input type="email" id="consultEmail" name="email" placeholder="Ваш email">
                     </div>
                     <div class="form-group">
-                        <select id="consultProgram">
+                        <select id="consultProgram" name="program">
                             <option value="" disabled selected>Выберите программу</option>
-                            <option value="state">Государственное управление</option>
-                            <option value="law">Юриспруденция</option>
-                            <option value="economics">Экономика</option>
-                            <option value="management">Менеджмент</option>
-                            <option value="other">Другое</option>
+                            <option value="Государственное управление">Государственное управление</option>
+                            <option value="Юриспруденция">Юриспруденция</option>
+                            <option value="Экономика">Экономика</option>
+                            <option value="Менеджмент">Менеджмент</option>
+                            <option value="Другое">Другое</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
@@ -369,7 +397,7 @@
             <i class="fas fa-check-circle"></i>
             <div class="toast-text">
                 <h4>Заявка отправлена!</h4>
-                <p>Мы свяжемся с вами в ближайшее время</p>
+                <p>Мы свяжемся с вами в течение рабочего дня</p>
             </div>
         </div>
     </div>
