@@ -113,57 +113,102 @@ function showToast() {
     }, 5000);
 }
 
-// Form submission
+// Form submission via mailto
 function handleFormSubmit(e, formType) {
     e.preventDefault();
     
     // Get form data
-    let formData = {};
-    if (formType === 'contact') {
-        formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value || 'cepkova64@mail.ru',
-            message: document.getElementById('message').value,
-            type: 'contact',
-            to: 'cepkova64@mail.ru' // Добавлен email получателя
-        };
-    } else if (formType === 'consult') {
-        formData = {
-            name: document.getElementById('consultName').value,
-            phone: document.getElementById('consultPhone').value,
-            email: document.getElementById('consultEmail').value || 'cepkova64@mail.ru',
-            program: document.getElementById('consultProgram').value,
-            type: 'consultation',
-            to: 'cepkova64@mail.ru' // Добавлен email получателя
-        };
-    }
+    const form = e.target;
+    let emailBody = '';
+    const inputs = form.querySelectorAll('input, select, textarea');
     
-    // Here you would send the data to your server
-    // For now, we'll just log it and show success message
-    console.log('Form submitted:', formData);
-    console.log('Email will be sent to: cepkova64@mail.ru');
+    inputs.forEach(input => {
+        if (input.name && input.value && input.type !== 'hidden') {
+            let fieldName = '';
+            
+            // Convert field name to readable format
+            switch(input.name) {
+                case 'name':
+                    fieldName = 'Имя';
+                    break;
+                case 'phone':
+                    fieldName = 'Телефон';
+                    break;
+                case 'email':
+                    fieldName = 'Email';
+                    break;
+                case 'message':
+                    fieldName = 'Сообщение';
+                    break;
+                case 'program':
+                    fieldName = 'Программа обучения';
+                    break;
+                default:
+                    fieldName = input.name;
+            }
+            
+            emailBody += `${fieldName}: ${input.value}\n`;
+        }
+    });
     
-    // Send data to analytics (if configured)
-    if (typeof ym !== 'undefined') {
-        ym(XXXXXX, 'reachGoal', 'form_submission'); // Replace XXXXXX with your Yandex.Metrica ID
-    }
+    // Add request type and date
+    const requestType = formType === 'consult' ? 'Запись на консультацию' : 'Вопрос с сайта';
+    emailBody += `\nТип заявки: ${requestType}`;
+    emailBody += `\nДата отправки: ${new Date().toLocaleString('ru-RU')}`;
     
-    // Send data to Facebook Pixel (if configured)
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead');
-    }
+    // Get subject
+    const subjectInput = form.querySelector('input[name="_subject"]');
+    const subject = subjectInput ? subjectInput.value : 'Заявка с сайта ИГАУ';
+    
+    // Encode for URL
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(emailBody);
+    
+    // Create mailto link
+    const mailtoLink = `mailto:cepkova64@mail.ru?subject=${encodedSubject}&body=${encodedBody}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
     
     // Show success message
-    showToast();
+    showSuccessMessage(requestType);
     
-    // Reset form
-    e.target.reset();
+    // Reset form after 1 second
+    setTimeout(() => {
+        form.reset();
+        
+        // Close modal if it's consultation form
+        if (formType === 'consult') {
+            closeModal();
+        }
+    }, 1000);
     
-    // Close modal if it was the consultation form
-    if (formType === 'consult') {
-        closeModal();
+    // Log for debugging
+    console.log('Заявка отправлена:', {
+        type: requestType,
+        subject: subject,
+        email: 'cepkova64@mail.ru'
+    });
+    
+    // Track in analytics if set up
+    if (typeof ym !== 'undefined') {
+        ym(XXXXXX, 'reachGoal', 'form_submission', { form_type: formType });
     }
+}
+
+// Updated success message function
+function showSuccessMessage(requestType) {
+    const toastTitle = successToast.querySelector('.toast-text h4');
+    const toastMessage = successToast.querySelector('.toast-text p');
+    
+    toastTitle.textContent = 'Заявка отправлена!';
+    toastMessage.textContent = `Мы свяжемся с вами в течение рабочего дня. Вы также можете связаться с нами по телефону 8 (914) 840-20-20 или в Telegram.`;
+    
+    successToast.classList.add('active');
+    
+    setTimeout(() => {
+        successToast.classList.remove('active');
+    }, 7000);
 }
 
 // Smooth scrolling for anchor links
@@ -330,6 +375,7 @@ consultationModal.addEventListener('click', (e) => {
     }
 });
 
+// Form submit handlers
 contactForm.addEventListener('submit', (e) => handleFormSubmit(e, 'contact'));
 consultForm.addEventListener('submit', (e) => handleFormSubmit(e, 'consult'));
 
@@ -389,4 +435,3 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
-
