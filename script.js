@@ -1,5 +1,6 @@
 // DOM elements
 const consultBtn = document.getElementById('consultBtn');
+const mainCtaBtn = document.getElementById('mainCtaBtn');
 const programsBtn = document.getElementById('programsBtn');
 const consultationModal = document.getElementById('consultationModal');
 const modalClose = document.getElementById('modalClose');
@@ -8,11 +9,13 @@ const consultForm = document.getElementById('consultForm');
 const successToast = document.getElementById('successToast');
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
-const currentTime = document.getElementById('currentTime');
-const currentDate = document.getElementById('currentDate');
+const currentTimeElement = document.getElementById('currentTime');
+const currentDateElement = document.getElementById('currentDate');
 const statusDot = document.getElementById('statusDot');
 const statusText = document.getElementById('statusText');
 const nextOpening = document.getElementById('nextOpening');
+const backToTopButton = document.querySelector('.back-to-top');
+const scrollProgress = document.querySelector('.scroll-progress');
 
 // Initialize date and time
 function updateDateTime() {
@@ -21,11 +24,11 @@ function updateDateTime() {
     // Format time
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
-    currentTime.textContent = `${hours}:${minutes}`;
+    currentTimeElement.textContent = `${hours}:${minutes}`;
     
     // Format date
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    currentDate.textContent = now.toLocaleDateString('ru-RU', options);
+    currentDateElement.textContent = now.toLocaleDateString('ru-RU', options);
     
     // Update status
     updateStatus(now);
@@ -171,6 +174,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (targetElement) {
             // Close mobile menu if open
             navLinks.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
@@ -180,8 +184,132 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Track active section for navigation highlighting
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section');
+    const navLinksElements = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinksElements.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Enhance buttons with interactive effects
+function enhanceButtons() {
+    // Remove pulse animation on hover
+    consultBtn.addEventListener('mouseenter', () => {
+        consultBtn.classList.remove('pulse-button');
+    });
+    
+    // Add click effects to all buttons
+    document.querySelectorAll('.btn, .cta-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+                pointer-events: none;
+            `;
+            
+            this.appendChild(ripple);
+            
+            // Remove ripple element after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Track button click
+            trackButtonClick(this.textContent.trim() || 'Кнопка');
+        });
+    });
+    
+    // Add hover effects for cards
+    document.querySelectorAll('.advantage, .contact-card, .schedule-card, .floating-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+}
+
+// Track button clicks for analytics
+function trackButtonClick(buttonName) {
+    console.log(`Клик по кнопке: ${buttonName}`);
+    
+    // Send to Yandex.Metrica if available
+    if (typeof ym !== 'undefined') {
+        ym(XXXXXX, 'reachGoal', 'button_click', { button_name: buttonName });
+    }
+    
+    // Send to Google Analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'click', {
+            'event_category': 'button',
+            'event_label': buttonName
+        });
+    }
+}
+
+// Initialize scroll progress indicator
+function initScrollProgress() {
+    window.addEventListener('scroll', () => {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight - winHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
+    });
+}
+
+// Initialize back to top button
+function initBackToTop() {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 // Event listeners
 consultBtn.addEventListener('click', openModal);
+mainCtaBtn.addEventListener('click', openModal);
 programsBtn.addEventListener('click', () => {
     window.scrollTo({
         top: document.getElementById('about').offsetTop - 80,
@@ -207,31 +335,15 @@ menuToggle.addEventListener('click', () => {
     
     if (navLinks.classList.contains('active')) {
         menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '100%';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.backgroundColor = 'white';
-        navLinks.style.padding = '2rem';
-        navLinks.style.boxShadow = 'var(--shadow-lg)';
-        navLinks.style.gap = '1.5rem';
     } else {
         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        navLinks.style.display = 'none';
     }
 });
 
-// Initialize
-updateDateTime();
-setInterval(updateDateTime, 60000); // Update every minute
-
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
-        navLinks.style.display = 'none';
         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
 });
@@ -244,4 +356,32 @@ window.addEventListener('scroll', () => {
     } else {
         header.style.boxShadow = 'var(--shadow)';
     }
+    
+    // Update active nav link
+    updateActiveNavLink();
+});
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize date and time
+    updateDateTime();
+    setInterval(updateDateTime, 60000); // Update every minute
+    
+    // Initialize interactive features
+    enhanceButtons();
+    initScrollProgress();
+    initBackToTop();
+    updateActiveNavLink();
+    
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
 });
