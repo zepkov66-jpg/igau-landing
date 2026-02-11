@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Институт государственного администрирования - Региональное представительство Улан-Удэ</title>
+    <meta name="description" content="Частное учреждение высшего образования. Региональное представительство в г. Улан-Удэ">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Яндекс.Метрика (код будет добавлен позже) -->
+    <!-- Meta Pixel (код будет добавлен позже) -->
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-badge">ИГАУ</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Институт государственного администрирования</span>
+                        <span class="logo-subtitle">Региональное представительство г. Улан-Удэ</span>
+                    </div>
+                </a>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">Об институте</a>
+                    <a href="#contacts" class="nav-link">Контакты</a>
+                    <a href="#schedule" class="nav-link">Режим работы</a>
+                    <button class="cta-button">Задать вопрос</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Качественное высшее образование в <span class="highlight">Улан-Удэ</span></h1>
+                    <p class="hero-subtitle">Негосударственное частное учреждение высшего образования с московскими стандартами качества в вашем городе</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="consultBtn">
+                            <i class="fas fa-graduation-cap"></i> Записаться на консультацию
+                        </button>
+                        <button class="btn btn-secondary" id="programsBtn">
+                            <i class="fas fa-book-open"></i> Узнать о программах
+                        </button>
+                    </div>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-university"></i>
+                            <span>Московское качество</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>В центре Улан-Удэ</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Гибкий график</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card">
+                        <div class="floating-card-header">
+                            <h3>Режим работы</h3>
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="floating-card-content">
+                            <div class="schedule-item">
+                                <span class="days">Пн-Пт</span>
+                                <span class="time">9:00 - 18:00</span>
+                            </div>
+                            <div class="schedule-item weekend">
+                                <span class="days">Сб, Вс</span>
+                                <span class="time">Выходной</span>
+                            </div>
+                        </div>
+                        <div class="floating-card-footer">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Консультация по телефону</span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stat">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">образовательных программ</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">выпускников ежегодно</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">Институт государственного администрирования</h2>
+            <p class="section-subtitle">Негосударственное частное учреждение высшего образования</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ЧУ ВО Институт государственного администрирования (г. Москва) - ведущее негосударственное образовательное учреждение, которое теперь доступно в Улан-Удэ через региональное представительство.</p>
+                    <p>Мы предлагаем современные образовательные программы в области государственного и муниципального управления, экономики, юриспруденции и других направлений, востребованных на рынке труда.</p>
+                    
+                    <div class="advantages">
+                        <div class="advantage">
+                            <i class="fas fa-award"></i>
+                            <h4>Диплом государственного образца</h4>
+                            <p>Признание на всей территории РФ</p>
+                        </div>
+                        <div class="advantage">
+                            <i class="fas fa-user-tie"></i>
+                            <h4>Практикующие преподаватели</h4>
+                            <p>Опытные специалисты из государственных структур</p>
+                        </div>
+                        <div class="advantage">
+                            <i class="fas fa-laptop-house"></i>
+                            <h4>Дистанционные технологии</h4>
+                            <p>Современная платформа онлайн-обучения</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-content">
+                            <i class="fas fa-university"></i>
+                            <p>Изображение кампуса</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="section contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title">Контакты и расположение</h2>
+            <p class="section-subtitle">Региональное представительство в г. Улан-Удэ</p>
+            
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-card-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Адрес представительства</h3>
+                        </div>
+                        <div class="contact-card-body">
+                            <p>г. Улан-Удэ, ул. Ленина, 54 (пример)</p>
+                            <p class="note">*Точный адрес уточняйте по телефону</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-card-header">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>Телефоны</h3>
+                        </div>
+                        <div class="contact-card-body">
+                            <p><strong>Приемная:</strong> +7 (3012) 12-34-56</p>
+                            <p><strong>Отдел по работе с абитуриентами:</strong> +7 (3012) 23-45-67</p>
+                            <p><strong>Электронная почта:</strong> ulan-ude@igau.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Остались вопросы?</h3>
+                        <p>Заполните форму, и мы свяжемся с вами в течение рабочего дня</p>
+                        
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Ваш e-mail">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" placeholder="Ваш вопрос" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Улан-Удэ на карте</h3>
+                            <p>Наше представительство находится в центре города</p>
+                            <div class="map-coordinates">
+                                <div class="coordinate">
+                                    <span>Широта:</span>
+                                    <strong>51.8345° N</strong>
+                                </div>
+                                <div class="coordinate">
+                                    <span>Долгота:</span>
+                                    <strong>107.5845° E</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section schedule-section" id="schedule">
+        <div class="container">
+            <h2 class="section-title">Режим работы</h2>
+            <p class="section-subtitle">Мы работаем для вашего удобства</p>
+            
+            <div class="schedule-container">
+                <div class="schedule-card">
+                    <div class="schedule-card-header">
+                        <i class="fas fa-building"></i>
+                        <h3>Основной график</h3>
+                    </div>
+                    <div class="schedule-card-body">
+                        <div class="time-slot">
+                            <div class="days">Понедельник - Пятница</div>
+                            <div class="hours">09:00 - 18:00</div>
+                            <div class="status open">Открыто</div>
+                        </div>
+                        <div class="time-slot">
+                            <div class="days">Суббота - Воскресенье</div>
+                            <div class="hours">Выходные дни</div>
+                            <div class="status closed">Закрыто</div>
+                        </div>
+                    </div>
+                    <div class="schedule-card-footer">
+                        <p><i class="fas fa-info-circle"></i> В праздничные дни график работы может меняться</p>
+                    </div>
+                </div>
+                
+                <div class="current-time">
+                    <div class="clock">
+                        <div id="currentTime">00:00</div>
+                        <div id="currentDate">1 января 2023</div>
+                    </div>
+                    <div class="status-indicator">
+                        <div class="status-dot" id="statusDot"></div>
+                        <div class="status-text" id="statusText">Проверка статуса...</div>
+                    </div>
+                    <div class="next-opening">
+                        <h4>Следующее открытие:</h4>
+                        <p id="nextOpening">Понедельник, 09:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-badge">ИГАУ</div>
+                        <div class="footer-logo-text">
+                            <h4>ЧУ ВО Институт государственного администрирования</h4>
+                            <p>Региональное представительство г. Улан-Удэ</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">Негосударственное частное учреждение высшего образования, предоставляющее качественное образование по московским стандартам в Улан-Удэ.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Информация</h4>
+                        <a href="#about">Об институте</a>
+                        <a href="#contacts">Контакты</a>
+                        <a href="#schedule">Режим работы</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Документы</h4>
+                        <a href="#">Лицензия</a>
+                        <a href="#">Аккредитация</a>
+                        <a href="#">Свидетельство</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакты</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> г. Улан-Удэ</p>
+                        <p><i class="fas fa-phone-alt"></i> +7 (3012) 12-34-56</p>
+                        <p><i class="fas fa-envelope"></i> ulan-ude@igau.ru</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 ЧУ ВО Институт государственного администрирования. Все права защищены.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for consultation -->
+    <div class="modal" id="consultationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Запись на консультацию</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Заполните форму, и наш специалист свяжется с вами для консультации по программам обучения, условиям поступления и стоимости.</p>
+                <form id="consultForm">
+                    <div class="form-group">
+                        <input type="text" id="consultName" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="consultPhone" placeholder="Ваш телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="consultProgram">
+                            <option value="" disabled selected>Выберите программу</option>
+                            <option value="state">Государственное управление</option>
+                            <option value="law">Юриспруденция</option>
+                            <option value="economics">Экономика</option>
+                            <option value="management">Менеджмент</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-calendar-check"></i> Записаться на консультацию
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success message -->
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <div class="toast-text">
+                <h4>Заявка отправлена!</h4>
+                <p>Мы свяжемся с вами в ближайшее время</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- Яндекс.Метрика (код будет добавлен позже) -->
+    <!-- Meta Pixel (код будет добавлен позже) -->
+</body>
+</html>
