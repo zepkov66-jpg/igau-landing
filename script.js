@@ -123,22 +123,26 @@ function handleFormSubmit(e, formType) {
         formData = {
             name: document.getElementById('name').value,
             phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
+            email: document.getElementById('email').value || 'cepkova64@mail.ru',
             message: document.getElementById('message').value,
-            type: 'contact'
+            type: 'contact',
+            to: 'cepkova64@mail.ru' // Добавлен email получателя
         };
     } else if (formType === 'consult') {
         formData = {
             name: document.getElementById('consultName').value,
             phone: document.getElementById('consultPhone').value,
+            email: document.getElementById('consultEmail').value || 'cepkova64@mail.ru',
             program: document.getElementById('consultProgram').value,
-            type: 'consultation'
+            type: 'consultation',
+            to: 'cepkova64@mail.ru' // Добавлен email получателя
         };
     }
     
     // Here you would send the data to your server
     // For now, we'll just log it and show success message
     console.log('Form submitted:', formData);
+    console.log('Email will be sent to: cepkova64@mail.ru');
     
     // Send data to analytics (if configured)
     if (typeof ym !== 'undefined') {
@@ -385,3 +389,4 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
