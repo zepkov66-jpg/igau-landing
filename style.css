@@ -1112,3 +1112,68 @@ p {
         font-size: 1rem;
     }
 }
+/* Добавьте эти стили в конец файла style.css */
+
+/* Стили для заметок в контактах */
+.contact-note {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #92400e;
+}
+
+.contact-note i {
+    color: #f59e0b;
+    margin-right: 0.5rem;
+}
+
+/* Стили для контактных указаний */
+.contact-directions {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+}
+
+.contact-directions p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-directions i {
+    font-size: 1.2rem;
+}
+
+/* Стили для информации о контактах в модальном окне */
+.modal-contact-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--bg-light);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.modal-contact-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.modal-contact-info i {
+    color: var(--primary-color);
+}
+
+/* Стили для заметки об адресе */
+.note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
